@@ -1,9 +1,9 @@
 // Engine start main smth
 
 #ifdef __APPLE__
-  #include "osx/main.mm"
+  #include "core/osx/main.mm"
 #endif
 
 #ifdef _WIN32
-  #include "windows/main.cpp"
+  #include "core/windows/main.cpp"
 #endif

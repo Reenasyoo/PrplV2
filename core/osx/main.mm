@@ -6,7 +6,10 @@ int main(int argc, const char * argv[])
     // Objects declared in this scope will be automatically
     // released at the end of it, when the pool is "drained".
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-
+    
+    
+    NSLog(@"OS X biach");
+    
     // Create a shared app instance.
     // This will initialize the global variable
     // 'NSApp' with the application instance.
