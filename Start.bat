@@ -1,3 +1,5 @@
 :: Window Start Engine Batch Script
 echo 'MS Windows'
-g++ start.mm -o StartWinOS.exe
+g++ core/start.mm -o build/StartWinOS.exe
+
+./StartWinOS.exe

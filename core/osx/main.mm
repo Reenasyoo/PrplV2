@@ -1,57 +1,40 @@
 // OS X main.cpp
 
 #import "Cocoa/Cocoa.h"
+//#import "MyOpenGLView.h"
+
 
 int main(int argc, const char * argv[])
 {
-    // Autorelease Pool:
-    // Objects declared in this scope will be automatically
-    // released at the end of it, when the pool is "drained".
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+  NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 
+  // Initialize NSAplication
+  [NSApplication sharedApplication];
 
-    NSLog(@"OS X biach");
+  NSUInteger windowStyle = NSTitledWindowMask | NSClosableWindowMask | NSResizableWindowMask;
 
-    // Create a shared app instance.
-    // This will initialize the global variable
-    // 'NSApp' with the application instance.
-    [NSApplication sharedApplication];
+  // Rectange that represents window
+  NSRect windowRect = NSMakeRect(100, 100, 400, 400);
+  NSWindow * window = [[NSWindow alloc] initWithContentRect:windowRect
+      styleMask: windowStyle
+      backing: NSBackingStoreBuffered
+      defer: NO];
 
-    //
-    // Create a window:
-    //
+  [window autorelease];
 
-    // Style flags:
-    NSUInteger windowStyle = NSTitledWindowMask | NSClosableWindowMask | NSResizableWindowMask;
+  NSWindowController * windowController = [[NSWindowController alloc] initWithWindow:window];
+  [windowController autorelease];
 
-    // Window bounds (x, y, width, height).
-    NSRect windowRect = NSMakeRect(100, 100, 400, 400);
-    NSWindow * window = [[NSWindow alloc] initWithContentRect:windowRect
-                                          styleMask:windowStyle
-                                          backing:NSBackingStoreBuffered
-                                          defer:NO];
-    [window autorelease];
+  // This will add a simple text view to the window,
+  // so we can write a test string on it.
+  NSTextView * textView = [[NSTextView alloc] initWithFrame:windowRect];
+  [textView autorelease];
 
-    // Window controller:
-    NSWindowController * windowController = [[NSWindowController alloc] initWithWindow:window];
-    [windowController autorelease];
+  [window setContentView: textView];
+  [textView insertText:@"Test Text"];
 
-    // This will add a simple text view to the window,
-    // so we can write a test string on it.
-    NSTextView * textView = [[NSTextView alloc] initWithFrame:windowRect];
-    [textView autorelease];
-
-    [window setContentView:textView];
-    [textView insertText:@"Hello OSX/Cocoa world!"];
-
-    // TODO: Create app delegate to handle system events.
-    // TODO: Create menus (especially Quit!)
-
-    // Show window and run event loop.
-    [window orderFrontRegardless];
-    [NSApp run];
-
-    [pool drain];
-
-    return 0;
+  [window orderFrontRegardless];
+  [NSApp run];
+  [pool drain];
+  return 0;
 }

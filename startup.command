@@ -3,4 +3,6 @@
 cd "$(dirname "$0")"
 
 echo 'Mac OS X'
-gcc start.mm -o startOSX -framework Cocoa
+gcc core/start.mm -o build/startOSX -framework Cocoa
+
+./startOSX
